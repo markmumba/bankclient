@@ -1,0 +1,16 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "inter" ,sans-serif;
+}
+@layer base{
+    li {
+        @apply md:p-3  p-2 text-sm md:text-base
+    }
+}
