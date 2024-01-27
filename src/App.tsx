@@ -3,17 +3,39 @@ import Login from "./components/login"
 import Navbar from "./components/navbar"
 import Register from "./components/register"
 import Dashboard from "./components/dashboard"
+import { useState } from "react"
+
+interface User {
+  user: {
+    username: string;
+    email: string;
+  };
+  account: Record<string, string>; // Assuming accountDetails is an object with string keys and values
+}
 
 function App() {
+
+  const [user, setUser] = useState(false)
+
+  const [userData, setUserData] = useState<User | null>()
+  const [account, setAccount] = useState(false)
+
+  function handleUser() {
+    setUser(!user)
+  }
+  function handleUserData(response: any) {
+    setUserData(response)
+  }
+
 
   return (
     <div className="bg-white">
       <BrowserRouter >
-      <Navbar/>
+        <Navbar user={user} handleUser={handleUser} userData={setUserData} />
         <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Dashboard userData={userData} handleUserData={handleUserData} />} />
+          <Route path="/login" element={<Login handleUser={handleUser} account={account} setAccount={setAccount} />} />
+          <Route path="/register" element={<Register setAccount={setAccount} />} />
         </Routes>
       </BrowserRouter>
     </div>

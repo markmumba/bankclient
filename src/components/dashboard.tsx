@@ -8,9 +8,8 @@ interface User {
     };
     account: Record<string, string>; // Assuming accountDetails is an object with string keys and values
 }
-function Dashboard() {
+function Dashboard(props: any) {
 
-    const [userData, setUserData] = useState<User | null>()
 
     async function userdata() {
         const response = await axiosInstance.get("/user", {
@@ -20,7 +19,7 @@ function Dashboard() {
             }
         })
         const content = response.data
-        setUserData(content)
+        props.handleUserData(content)
     }
 
     useEffect(() => {
@@ -32,25 +31,27 @@ function Dashboard() {
     return (
         <div className="pt-24">
             <div>
-                <h2>User Details</h2>
-                {userData && (
+                {props.userData ? (
                     <div>
-                        <p>Email: {userData.user.email}</p>
-                        <p>Username: {userData.user.username}</p>
+                        <h2>User Details</h2>
+                        <div>
+                            <p>Email: {props.userData.user.email}</p>
+                            <p>Username: {props.userData.user.username}</p>
+                        </div>
+                        <h2>Account Details</h2>
+                        <ul>
+                            {Object.entries(props.userData.account).map(([accountNumber, accountType]) => (
+                                <li key={accountNumber}>
+                                    <strong>Account Number:</strong> {accountNumber}, <strong>Account Type:</strong> {accountType}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
-                )}
-
-                <h2>Account Details</h2>
-                {userData && userData.account && (
-                    <ul>
-                        {Object.entries(userData.account).map(([accountNumber, accountType]) => (
-                            <li key={accountNumber}>
-                                <strong>Account Number:</strong> {accountNumber}, <strong>Account Type:</strong> {accountType}
-                            </li>
-                        ))}
-                    </ul>
+                ) : (
+                    <h4>You are not logged in </h4>
                 )}
             </div>
+
         </div>
     )
 }
