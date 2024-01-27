@@ -8,7 +8,11 @@ interface User {
     };
     account: Record<string, string>; // Assuming accountDetails is an object with string keys and values
 }
+
+
 function Dashboard(props: any) {
+
+    const [userData, setUserData] = useState<User | null>()
 
 
     async function userdata() {
@@ -19,6 +23,7 @@ function Dashboard(props: any) {
             }
         })
         const content = response.data
+        setUserData(content)
         props.handleUserData(content)
     }
 
@@ -31,25 +36,32 @@ function Dashboard(props: any) {
     return (
         <div className="pt-24">
             <div>
-                {props.userData ? (
-                    <div>
-                        <h2>User Details</h2>
-                        <div>
-                            <p>Email: {props.userData.user.email}</p>
-                            <p>Username: {props.userData.user.username}</p>
-                        </div>
-                        <h2>Account Details</h2>
-                        <ul>
-                            {Object.entries(props.userData.account).map(([accountNumber, accountType]) => (
-                                <li key={accountNumber}>
-                                    <strong>Account Number:</strong> {accountNumber}, <strong>Account Type:</strong> {accountType}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                ) : (
-                    <h4>You are not logged in </h4>
-                )}
+                {props.userState ? (
+                    <>
+                        {userData ? (
+                            <div>
+                                <h2>User Details</h2>
+                                <div>
+                                    <p>Email: {userData.user.email}</p>
+                                    <p>Username: {userData.user.username}</p>
+                                </div>
+                                <h2>Account Details</h2>
+                                <ul>
+                                    {Object.entries(userData.account).map(([accountNumber, accountType]) => (
+                                        <li key={accountNumber}>
+                                            <strong>Account Number:</strong> {accountNumber}, <strong>Account Type:</strong> {accountType}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ) : (<>
+                            <h1>No user data available</h1>
+                        </>)}
+                    </>) :
+                    (<>
+                        <h1>You are logged out of the app </h1>
+                    </>)
+                }
             </div>
 
         </div>

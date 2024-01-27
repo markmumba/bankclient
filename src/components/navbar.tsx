@@ -19,7 +19,7 @@ const Navbar = (props: any) => {
                 'Content-Type': 'application/json'
             }
         })
-        props.userData(null)
+        props.handleUserData()
         props.handleUser()
     }
 

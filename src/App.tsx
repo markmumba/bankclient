@@ -16,24 +16,24 @@ interface User {
 function App() {
 
   const [user, setUser] = useState(false)
+  const [userState, setUserState] = useState(false)
 
-  const [userData, setUserData] = useState<User | null>()
   const [account, setAccount] = useState(false)
 
   function handleUser() {
     setUser(!user)
   }
-  function handleUserData(response: any) {
-    setUserData(response)
+  function handleUserData() {
+    setUserState(!userState)
   }
 
 
   return (
     <div className="bg-white">
       <BrowserRouter >
-        <Navbar user={user} handleUser={handleUser} userData={setUserData} />
+        <Navbar user={user} handleUser={handleUser} handleUserData={handleUserData} />
         <Routes>
-          <Route path="/" element={<Dashboard userData={userData} handleUserData={handleUserData} />} />
+          <Route path="/" element={<Dashboard handleUserData={handleUserData} userState={userState} />} />
           <Route path="/login" element={<Login handleUser={handleUser} account={account} setAccount={setAccount} />} />
           <Route path="/register" element={<Register setAccount={setAccount} />} />
         </Routes>

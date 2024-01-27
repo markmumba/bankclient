@@ -52,11 +52,11 @@ function Login(props: any) {
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <label htmlFor="email" className="block text-sm font-medium text-gray-600">Email</label>
-                            <input type="email" id="email" name="email" onChange={handleChange} value={login.email} className="mt-1 p-3 rounded-md bg-gray-200 text-white w-full" />
+                            <input type="email" id="email" name="email" onChange={handleChange} value={login.email} className="mt-1 p-3 rounded-md bg-gray-200  w-full" />
                         </div>
                         <div className="mb-4">
                             <label htmlFor="password" className="block text-sm font-medium text-gray-600">Password</label>
-                            <input type="password" id="password" name="password" onChange={handleChange} value={login.password} className="mt-1 p-3 rounded-md bg-gray-200 text-white w-full" />
+                            <input type="password" id="password" name="password" onChange={handleChange} value={login.password} className="mt-1 p-3 rounded-md bg-gray-200  w-full" />
                         </div>
                         <button type="submit" className="bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600">Login</button>
                     </form>
