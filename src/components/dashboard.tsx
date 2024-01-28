@@ -22,6 +22,7 @@ interface Dashboard {
 }
 
 function Dashboard(props: any) {
+    const number: number = 5
 
     const [userData, setUserData] = useState<Dashboard | null>()
 
@@ -54,11 +55,12 @@ function Dashboard(props: any) {
                                 <div className="h-screen">
                                     <SideBar fullName={userData.user.fullname} />
                                 </div>
-                                <div className="absolute left-60 ">
+                                <div className="absolute left-[30%]">
+
                                     <h1 className="text-4xl font-bold ">Dashboard</h1>
                                     <h2 className="text-slate-500">Welcome back , {userData.user.username}</h2>
                                 </div>
-                                <div className="flex space-x-10 w-full absolute pt-24 left-60 ">
+                                <div className="flex space-x-10 w-full absolute pt-24 left-[30%] ">
                                     {userData.account.map((account: AccountDetails) => (
 
                                         <div className="rounded-2xl  flex-auto max-w-sm p-6 space-y-4 text-white  shadow-lg  bg-gradient-to-br from-cyan-500  via-indigo-500 to-slate-900">
@@ -81,7 +83,7 @@ function Dashboard(props: any) {
                         </>)
                         }
 
-                        <Transaction />
+                        <Transaction number={number} />
                     </div>) :
                     (<>
                         <h1>You are logged out of the app </h1>
