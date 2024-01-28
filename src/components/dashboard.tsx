@@ -1,18 +1,28 @@
 import { useEffect, useState } from "react";
 import { axiosInstance } from "../services/fetcher";
+import SideBar from "./sidebar";
+import { formatMoneyString, getExpireDate, splitAccountNo } from "./helper";
 
-interface User {
-    user: {
-        username: string;
-        email: string;
-    };
-    account: Record<string, string>; // Assuming accountDetails is an object with string keys and values
+interface UserDetails {
+    username: string;
+    fullname: string;
 }
 
+interface AccountDetails {
+    accountNumber: string;
+    accountType: string;
+    balance: string;
+    dateJoined: string;
+}
+
+interface Dashboard {
+    user: UserDetails;
+    account: AccountDetails[];
+}
 
 function Dashboard(props: any) {
 
-    const [userData, setUserData] = useState<User | null>()
+    const [userData, setUserData] = useState<Dashboard | null>()
 
 
     async function userdata() {
@@ -34,36 +44,47 @@ function Dashboard(props: any) {
 
 
     return (
-        <div className="pt-24">
+        <div className="">
             <div>
                 {props.userState ? (
-                    <>
+                    <div className="flex py-20">
                         {userData ? (
-                            <div>
-                                <h2>User Details</h2>
-                                <div>
-                                    <p>Email: {userData.user.email}</p>
-                                    <p>Username: {userData.user.username}</p>
+                            <>
+                                <div className="h-screen">
+                                    <SideBar fullName={userData.user.fullname} />
                                 </div>
-                                <h2>Account Details</h2>
-                                <ul>
-                                    {Object.entries(userData.account).map(([accountNumber, accountType]) => (
-                                        <li key={accountNumber}>
-                                            <strong>Account Number:</strong> {accountNumber}, <strong>Account Type:</strong> {accountType}
-                                        </li>
+                                <div className="absolute left-1/4 ">
+                                    <h1 className="text-4xl font-bold ">Dashboard</h1>
+                                    <h2 className="text-slate-500">Welcome back , {userData.user.username}</h2>
+                                </div>
+                                <div className="flex space-x-10 w-full absolute pt-24 left-1/4 ">
+                                    {userData.account.map((account: AccountDetails) => (
+
+                                        <div className="rounded-2xl  flex-auto max-w-sm p-6 space-y-4 text-white  shadow-lg  bg-gradient-to-br from-cyan-500  via-indigo-500 to-slate-900">
+                                            <div className="flex justify-between">
+                                                <p className="text-xl">{`${account.accountType}'s Account`}</p>
+                                                <p>{getExpireDate(account.dateJoined)}</p>
+                                            </div>
+                                            <div className="text-xl">
+                                                <p>{splitAccountNo(account.accountNumber)}</p>
+                                            </div>
+                                            <div className="text-3xl">
+                                                <p>{formatMoneyString(account.balance)}</p>
+                                            </div>
+                                        </div>
                                     ))}
-                                </ul>
-                            </div>
+                                </div>
+                            </>
                         ) : (<>
                             <h1>No user data available</h1>
-                        </>)}
-                    </>) :
+                        </>)
+                        }
+                    </div>) :
                     (<>
                         <h1>You are logged out of the app </h1>
                     </>)
                 }
             </div>
-
         </div>
     )
 }

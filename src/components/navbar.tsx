@@ -33,7 +33,7 @@ const Navbar = (props: any) => {
                     props.user ? (
                         <div className="flex items-center">
                             <ul className="hidden md:flex ">
-                                <li><Link to="/" onClick={handleLogout}>Logout</Link></li>
+                                <li className="border py-3 px-6 rounded-lg hover:bg-slate-400 hover:text-white"><Link to="/" onClick={handleLogout}>Logout</Link></li>
                                 <li><a href="#pricing">Transactions</a></li>
                                 <li><a href="#contact">Accounts</a></li>
                             </ul>

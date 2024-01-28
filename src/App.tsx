@@ -5,13 +5,7 @@ import Register from "./components/register"
 import Dashboard from "./components/dashboard"
 import { useState } from "react"
 
-interface User {
-  user: {
-    username: string;
-    email: string;
-  };
-  account: Record<string, string>; // Assuming accountDetails is an object with string keys and values
-}
+
 
 function App() {
 
@@ -24,7 +18,7 @@ function App() {
     setUser(!user)
   }
   function handleUserData() {
-    setUserState(!userState)
+    setUserState(true)
   }
 
 
