@@ -2,14 +2,7 @@ import { useEffect, useState } from "react"
 import { axiosInstance } from "../services/fetcher"
 import { formatMoneyString } from "./helper"
 
-interface Transaction {
-    recepientAccount: string,
-    amount: string,
-    type: string
-    timestamp: string
-    accountType: string
 
-}
 
 function Transaction(props: any) {
 

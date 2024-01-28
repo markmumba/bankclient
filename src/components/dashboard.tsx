@@ -4,22 +4,7 @@ import SideBar from "./sidebar";
 import { formatMoneyString, getExpireDate, splitAccountNo } from "./helper";
 import Transaction from "./transaction";
 
-interface UserDetails {
-    username: string;
-    fullname: string;
-}
 
-interface AccountDetails {
-    accountNumber: string;
-    accountType: string;
-    balance: string;
-    dateJoined: string;
-}
-
-interface Dashboard {
-    user: UserDetails;
-    account: AccountDetails[];
-}
 
 function Dashboard(props: any) {
     const number: number = 5
