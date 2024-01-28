@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { axiosInstance } from "../services/fetcher";
 import SideBar from "./sidebar";
 import { formatMoneyString, getExpireDate, splitAccountNo } from "./helper";
+import Transaction from "./transaction";
 
 interface UserDetails {
     username: string;
@@ -53,11 +54,11 @@ function Dashboard(props: any) {
                                 <div className="h-screen">
                                     <SideBar fullName={userData.user.fullname} />
                                 </div>
-                                <div className="absolute left-1/4 ">
+                                <div className="absolute left-60 ">
                                     <h1 className="text-4xl font-bold ">Dashboard</h1>
                                     <h2 className="text-slate-500">Welcome back , {userData.user.username}</h2>
                                 </div>
-                                <div className="flex space-x-10 w-full absolute pt-24 left-1/4 ">
+                                <div className="flex space-x-10 w-full absolute pt-24 left-60 ">
                                     {userData.account.map((account: AccountDetails) => (
 
                                         <div className="rounded-2xl  flex-auto max-w-sm p-6 space-y-4 text-white  shadow-lg  bg-gradient-to-br from-cyan-500  via-indigo-500 to-slate-900">
@@ -79,6 +80,8 @@ function Dashboard(props: any) {
                             <h1>No user data available</h1>
                         </>)
                         }
+
+                        <Transaction />
                     </div>) :
                     (<>
                         <h1>You are logged out of the app </h1>

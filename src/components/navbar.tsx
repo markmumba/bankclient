@@ -33,7 +33,7 @@ const Navbar = (props: any) => {
                     props.user ? (
                         <div className="flex items-center">
                             <ul className="hidden md:flex ">
-                                <li className="border py-3 px-6 rounded-lg hover:bg-slate-400 hover:text-white"><Link to="/" onClick={handleLogout}>Logout</Link></li>
+                                <li className="border py-3 px-6 rounded-lg bg-indigo-700 hover:bg-slate-400 hover:text-white"><Link to="/" onClick={handleLogout}>Logout</Link></li>
                                 <li><a href="#pricing">Transactions</a></li>
                                 <li><a href="#contact">Accounts</a></li>
                             </ul>
@@ -41,8 +41,8 @@ const Navbar = (props: any) => {
                     ) : (
                         <div className="flex items-center">
                             <ul className="hidden md:flex space-x-6 ">
-                                <li className="border py-3 px-8 text-white rounded-lg bg-slate-500 hover:bg-white hover:text-black"><Link to="/login">Login</Link></li>
-                                <li className="border py-3 px-8 rounded-lg hover:bg-slate-500 hover:text-white "><Link to="/register">Register</Link></li>
+                                <li className="border py-3 px-8 text-white rounded-lg bg-indigo-500 hover:bg-indigo-700 "><Link to="/login">Login</Link></li>
+                                <li className="border py-3 px-8 rounded-lg hover:bg-indigo-700 hover:text-white "><Link to="/register">Register</Link></li>
                             </ul>
                         </div>
                     )}
