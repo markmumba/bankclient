@@ -31,8 +31,7 @@ function Login(props: any) {
                 }
             })
 
-            props.handleUser()
-            props.setAccount(false)
+            props.handleUser(true)
             navigate("/")
         } catch (error) {
             console.error("Error:", error)

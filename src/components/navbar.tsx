@@ -13,14 +13,12 @@ const Navbar = (props: any) => {
 
 
     async function handleLogout() {
-        await axiosInstance.post("/logout", {
-            withCredentials: true,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        props.handleUserData()
-        props.handleUser()
+            await axiosInstance.post("/logout", {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
     }
 
     return (
@@ -32,9 +30,9 @@ const Navbar = (props: any) => {
                 {
                     props.user ? (
                         <div className="flex items-center">
-                            <ul className="hidden md:flex ">
-                                <li className="border py-3 px-6 rounded-lg bg-indigo-700 hover:bg-slate-400 hover:text-white"><Link to="/" onClick={handleLogout}>Logout</Link></li>
-                                <li><a href="#pricing">Transactions</a></li>
+                            <ul className="hidden md:flex space-x-6 ">
+                                <li className="border py-3 px-6 rounded-lg text-white bg-indigo-700 hover:bg-slate-400 hover:text-white"><Link to="/login" onClick={handleLogout}>Logout</Link></li>
+                                <li className="hover:border rounded-lg hover:text-white hover:bg-indigo-700"><Link to="/transactions">Transactions</Link></li>
                                 <li><a href="#contact">Accounts</a></li>
                             </ul>
                         </div>

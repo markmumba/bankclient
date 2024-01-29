@@ -1,5 +1,5 @@
 
-export  function getExpireDate(dateString: string): string {
+export function getExpireDate(dateString: string): string {
     const originalDate = new Date(dateString);
     const expirationDate = new Date(originalDate);
     expirationDate.setFullYear(expirationDate.getFullYear() + 5);
@@ -33,4 +33,12 @@ export function formatMoneyString(moneyString: string) {
     }).format(numberValue);
 
     return formattedMoney;
+}
+
+
+export function formatDate(datestring: string): string {
+
+    const date = new Date(datestring)
+    const readableDate = date.toLocaleDateString()
+    return readableDate.toString()
 }

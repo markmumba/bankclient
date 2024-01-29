@@ -1,24 +1,38 @@
-import avatar from "../assets/avatar.png"
-import transfer from "../assets/money-transfer (1).png"
+import { Link } from "react-router-dom";
+import { PersonCircle, CashStack, GraphUpArrow } from "react-bootstrap-icons";
+
 
 function SideBar({ fullName }: any) {
 
     return (
-        <div className=" h-screen  p-6">
+        <div className=" h-screen font-semibold  p-6">
 
             <div className="text-l mb-4  hover:bg-slate-50">
-                <img src={avatar} className="h-20 pl-5" alt="" />
-                <p>{`${fullName.toUpperCase()}`}'S </p>
-            </div>
-            <ul>
-                <li className="py-4">
-                    <div className="py-2 hover:bg-slate-50 ">
-                        <img src={transfer} className="h-20" alt="bank" />
-                        <p className="py-1 pl-2 text-l">Transfer</p>
+                <Link to="/">
+                    <div className="px-7">
+                        <PersonCircle className="text-indigo-700 " size={70} />
                     </div>
-                </li>
-                <li className="py-2 hover:bg-gray-700">Statistics</li>
-            </ul>
+                    <p>{`${fullName.toUpperCase()}`}'S </p>
+                </Link>
+            </div>
+            <div className="text-l mb-4 py-2 hover:bg-slate-50">
+                <Link to="/transfer">
+                    <div className="px-7">
+                        <CashStack className="text-indigo-700 " size={70} />
+                    </div>
+                    <p className="py-1 pl-7 text-l">Transfer</p>
+                </Link>
+            </div>
+            <div className="text-l mb-4 py-2 hover:bg-slate-50">
+                <Link to="/">
+                    <div className="px-7">
+                        <GraphUpArrow className="text-indigo-700 " size={60} />
+                    </div>
+                    <p className="py-1 pl-7 text-l">Statistics</p>
+                </Link>
+            </div>
+
+
         </div>
     )
 

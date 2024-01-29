@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { axiosInstance } from "../services/fetcher"
-import { formatMoneyString } from "./helper"
+import { formatDate, formatMoneyString } from "./helper"
+import { Link } from "react-router-dom"
 
 
 
@@ -31,7 +32,7 @@ function Transaction(props: any) {
 
     return (
         <>
-            <div className="absolute left-[30%] w-full top-[45%]">
+            <div className={`absolute left-[30%] w-full top-[${props.top}%]`}>
                 <h1 className=" font-bold text-3xl pb-3">My Transactions</h1>
                 {transactions ? (
                     <div>
@@ -41,14 +42,20 @@ function Transaction(props: any) {
                                     {transaction.type === 'deposit' ? '+' : '-'}
                                     {formatMoneyString(transaction.amount)}</p>
                                 <p>{transaction.recepientAccount ? transaction.recepientAccount : transaction.type}</p>
-                                <p>{new Date(transaction.timestamp).toLocaleString()}</p>
+                                <p>{formatDate(transaction.timestamp)}</p>
                                 <p>{transaction.accountType}</p>
 
                             </div>
                         ))}
-                        <div className="absolute left-[40%] p-4">
-                            <button className=" border px-6 py-3 rounded-lg bg-indigo-600 text-white">See more</button>
-                        </div>
+
+                        {transactions && transactions.length > 0 && (
+                            <div className="absolute  p-2">
+                                <button className="border px-6 py-3 rounded-lg bg-indigo-600 text-white">
+                                    <Link to="/transactions">See more</Link>
+                                </button>
+                            </div>
+                        )} 
+
                     </div>
 
                 )
