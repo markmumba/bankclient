@@ -28,23 +28,26 @@ function MainTransaction() {
     return (
         <>
             <div className="flex ">
-                <SideBar  />
+                <SideBar />
                 <>
                     <div className="absolute left-[30%] w-full top-[5%] bg-white">
                         <h1 className=" font-bold text-3xl pb-3">My Transactions</h1>
                         {transactions ? (
                             <div>
-                                {transactions.map((transaction, index) => (
-                                    <div className=" max-w-4xl rounded-lg flex flex-auto px-6 py-3 space-x-40 my-3 bg-slate-100" key={index}>
-                                        <p style={{ color: transaction.type === 'deposit' ? 'green' : 'red' }}>
-                                            {transaction.type === 'deposit' ? '+' : '-'}
-                                            {formatMoneyString(transaction.amount)}</p>
-                                        <p>{transaction.recepientAccount ? transaction.recepientAccount : transaction.type}</p>
-                                        <p>{formatDate(transaction.timestamp)}</p>
-                                        <p>{transaction.accountType}</p>
+                                <div className="flex flex-col max-w-5xl">
+                                    {transactions.map((transaction, index) => (
+                                        <div className="flex items-center justify-between rounded-lg px-6 py-3 my-3 bg-slate-100" key={index}>
+                                            <div style={{ color: transaction.type === 'deposit' ? 'green' : 'red' }}>
+                                                {transaction.type === 'deposit' ? '+' : '-'}
+                                                {formatMoneyString(transaction.amount)}
+                                            </div>
+                                            <div>{transaction.recepientAccount ? transaction.recepientAccount : transaction.type}</div>
+                                            <div>{formatDate(transaction.timestamp)}</div>
+                                            <div>{transaction.accountType}</div>
+                                        </div>
+                                    ))}
+                                </div>
 
-                                    </div>
-                                ))}
                             </div>
 
                         )

@@ -19,6 +19,8 @@ function App() {
 
   const [transactionType, setTransactionType] = useState("")
 
+  const [transactionDetails, setTransactionDetails] = useState<{}>()
+
   function handleTransactionType(type: string) {
     setTransactionType(type)
   }
@@ -32,18 +34,51 @@ function App() {
     return username
   }
 
+  function handleTransactionDetails(details: object) {
+    setTransactionDetails(details)
+  }
+
 
   return (
     <div className="">
       <BrowserRouter >
         <Navbar user={user} handleUser={handleUser} />
         <Routes>
-          <Route path="/" element={<Dashboard handleUserData={handleUser} user={user} handleUserName={handleUserName} />} />
-          <Route path="/login" element={<Login handleUser={handleUser} account={account} />} />
-          <Route path="/register" element={<Register setAccount={setAccount} />} />
-          <Route path="/transactions" element={<MainTransaction  />} />
-          <Route path="/transfer" element={<Transfer username={username} handleTransactionType={handleTransactionType} />} />
-          <Route path="/form" element={<TransactionForm username={username} transactionType={transactionType} />} />
+          <Route path="/" element={
+            <Dashboard
+              handleUserData={handleUser}
+              user={user}
+              handleUserName={handleUserName}
+              transactionDetails={transactionDetails}
+            />}
+          />
+          <Route path="/login" element={
+            <Login
+              handleUser={handleUser}
+              account={account}
+            />}
+          />
+          <Route path="/register" element={
+            <Register
+              setAccount={setAccount}
+            />}
+          />
+          <Route path="/transactions" element={
+            <MainTransaction />
+          } />
+          <Route path="/transfer" element={
+            <Transfer
+              username={username}
+              handleTransactionType={handleTransactionType}
+            />
+          } />
+          <Route path="/form" element={
+            <TransactionForm
+              username={username}
+              transactionType={transactionType}
+              handleTransactionDetails={handleTransactionDetails}
+            />
+          } />
         </Routes>
       </BrowserRouter>
     </div>

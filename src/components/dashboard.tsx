@@ -10,6 +10,10 @@ import ErrorPage from "./error";
 function Dashboard(props: any) {
     const number: number = 5
 
+    const [showDetails, setShowDetails] = useState(false);
+
+
+
 
     const [userData, setUserData] = useState<Dashboard | null>()
 
@@ -27,24 +31,45 @@ function Dashboard(props: any) {
 
     useEffect(() => {
         (userdata)();
-    }, [])
+
+        if (props.transactionDetails) {
+            setShowDetails(true);
+            const timeoutId = setTimeout(() => {
+                setShowDetails(false);
+            }, 4000);
+
+            return () => clearTimeout(timeoutId);
+        }
+    }, [props.transactionDetails])
 
 
 
     return (
         <div className="overflow-hidden">
             <div>
-                {props.user ? (
+                {props.user ? (<>
+                    <div className="absolute pl-[50%] pt-12">
+                        {showDetails && props.transactionDetails ? (
+                            <div className="border p-4 bg-lime-300 m-4 rounded-lg">
+                                A transaction has been on your {' '}
+                                {props.transactionDetails.accountType}'s account
+                            </div>
+                        ):null}
+                    </div>
                     <div className="flex py-20">
+
                         {userData ? (
                             <>
                                 <div className="h-screen">
                                     <SideBar fullName={props.handleUserName(userData.user.fullname)} />
                                 </div>
-                                <div className="absolute left-[30%]">
 
-                                    <h1 className="text-4xl font-bold ">Dashboard</h1>
-                                    <h2 className="text-slate-500">Welcome back , {userData.user.username}</h2>
+
+                                <div className="absolute left-[30%] ">
+                                    <div>
+                                        <h1 className="text-4xl font-bold ">Dashboard</h1>
+                                        <h2 className="text-slate-500">Welcome back , {userData.user.username}</h2>
+                                    </div>
                                 </div>
                                 <div className="flex space-x-10 w-full absolute pt-24 left-[30%]">
                                     {userData.account.length < 2 ? (
@@ -94,7 +119,8 @@ function Dashboard(props: any) {
                         }
 
                         <Transaction number={number} />
-                    </div>) :
+                    </div>
+                </>) :
                     (<>
                         <ErrorPage message={'You are logged out of the app'} />
                     </>)
