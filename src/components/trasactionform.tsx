@@ -2,6 +2,7 @@
 
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { axiosInstance } from '../services/fetcher';
+import SideBar from './sidebar';
 
 function TransactionForm(props: any) {
     const [formData, setFormData] = useState({
@@ -38,9 +39,11 @@ function TransactionForm(props: any) {
     };
 
     return (
-        <div className='py-20'>
-            <div className="max-w-xl mx-auto mt-8 p-10 border bg-white  rounded-lg shadow-md">
-            
+        <div className='py-20 flex'>
+            <SideBar  />
+            <div className=''>
+            <div className=" absolute w-full left-[35%] max-w-xl mt-8 p-10 border bg-white  rounded-lg shadow-md">
+
                 <h2 className="text-3xl font-bold mb-4">Make {props.transactionType}</h2>
 
                 <form onSubmit={handleSubmit}>
@@ -81,6 +84,7 @@ function TransactionForm(props: any) {
                     </button>
                 </form>
             </div>
+        </div>
         </div>
     );
 };

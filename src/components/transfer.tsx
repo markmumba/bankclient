@@ -5,18 +5,27 @@ import SideBar from "./sidebar";
 function Transfer(props: any) {
     return (
         <>
-            <div className="py-20 flex">
+            <div className=" flex py-24">
+                <SideBar  />
+                <div className="mx-[10%] flex flex-col w-full  items-center  bg-white ">
 
-                <SideBar fullName={props.username} />
-                <div className="absolute left-[35%] flex flex-col ">
-                    <button onClick={() => props.handleTransactionType('deposit')} className="border px-64 py-4 rounded-lg bg-indigo-500 text-white text-xl my-5">
-                        <Link to="/form">
+                    <Link to="/form">
+                        <button onClick={() => props.handleTransactionType('deposit')} className="border px-44 py-4  rounded-lg bg-indigo-500 text-white text-xl my-5">
                             Deposit
-                        </Link>
-                    </button>
-                    <button onClick={() => props.handleTransactionType('withdraw')} className="border px-64 py-4 rounded-lg bg-indigo-500 text-white text-xl my-5">
-                        <Link to="/form"> withdraw</Link></button>
-                    <button className="border  px-64 py-4 rounded-lg bg-indigo-500 text-white text-xl my-5">Transfer Funds</button>
+                        </button>
+                    </Link>
+
+                    <Link to="/form">
+                        <button onClick={() => props.handleTransactionType('withdraw')} className="border px-44 py-4  rounded-lg bg-indigo-500 text-white text-xl my-5">
+                            Withdraw
+                        </button>
+                    </Link>
+
+                    <Link to="/form">
+                        <button onClick={() => props.handleTransactionType('transferfunds')} className="border  px-36 py-4 rounded-lg bg-indigo-500 text-white text-xl my-5">
+                            Transfer Funds
+                        </button>
+                    </Link>
                 </div>
             </div>
         </>

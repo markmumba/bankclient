@@ -58,7 +58,8 @@ function Dashboard(props: any) {
                                                     <div className="text-xl">
                                                         <p>{splitAccountNo(account.accountNumber)}</p>
                                                     </div>
-                                                    <div className="text-3xl">
+
+                                                    <div className="text-3xl  ">
                                                         <p>{formatMoneyString(account.balance)}</p>
                                                     </div>
                                                 </div>
@@ -92,7 +93,7 @@ function Dashboard(props: any) {
                         </>)
                         }
 
-                        <Transaction number={number} top={45} />
+                        <Transaction number={number} />
                     </div>) :
                     (<>
                         <ErrorPage message={'You are logged out of the app'} />

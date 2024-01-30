@@ -34,16 +34,16 @@ function App() {
 
 
   return (
-    <div className="bg-white overflow-hidden">
+    <div className="">
       <BrowserRouter >
         <Navbar user={user} handleUser={handleUser} />
         <Routes>
           <Route path="/" element={<Dashboard handleUserData={handleUser} user={user} handleUserName={handleUserName} />} />
           <Route path="/login" element={<Login handleUser={handleUser} account={account} />} />
           <Route path="/register" element={<Register setAccount={setAccount} />} />
-          <Route path="/transactions" element={<MainTransaction username={username} />} />
+          <Route path="/transactions" element={<MainTransaction  />} />
           <Route path="/transfer" element={<Transfer username={username} handleTransactionType={handleTransactionType} />} />
-          <Route path="/form" element={<TransactionForm transactionType={transactionType} />} />
+          <Route path="/form" element={<TransactionForm username={username} transactionType={transactionType} />} />
         </Routes>
       </BrowserRouter>
     </div>

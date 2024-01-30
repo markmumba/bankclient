@@ -32,7 +32,7 @@ function Transaction(props: any) {
 
     return (
         <>
-            <div className={`absolute left-[30%] w-full top-[${props.top}%]`}>
+            <div className={`absolute left-[30%] w-full top-[45%]`}>
                 <h1 className=" font-bold text-3xl pb-3">My Transactions</h1>
                 {transactions ? (
                     <div>
