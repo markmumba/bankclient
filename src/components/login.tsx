@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { axiosInstance } from "../services/fetcher";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import image from "../assets/8292064.jpg"
 
 function Login(props: any) {
@@ -59,6 +59,7 @@ function Login(props: any) {
                         </div>
                         <button type="submit" className="bg-blue-500 text-white p-3 rounded-md hover:bg-blue-600">Login</button>
                     </form>
+                    <p className="mt-4 text-blue-700 underline"><Link to="/register"> Don't have an account?  </Link></p>
                 </div>
             </div>
         </>

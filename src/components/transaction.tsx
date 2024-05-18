@@ -17,6 +17,7 @@ function Transaction(props: any) {
             }
         })
         const content = (response.data)
+        console.log(content)
         if (props.number) {
             const lastfive = content.slice(0, props.number);
             setTransactions(lastfive)
