@@ -5,35 +5,8 @@ import { formatMoneyString, getExpireDate, splitAccountNo } from "./helper";
 import Transaction from "./transaction";
 import ErrorPage from "./error";
 
-// Define interfaces
-interface AccountDetails {
-    accountNumber: string;
-    accountType: string;
-    balance: string;
-    dateJoined: string;
-}
 
-interface User {
-    fullname: string;
-    username: string;
-}
-
-interface Dashboard {
-    user: User;
-    account: AccountDetails[];
-}
-
-interface TransactionDetails {
-    accountType: string;
-}
-
-interface DashboardProps {
-    user: boolean;
-    transactionDetails: TransactionDetails | null;
-    handleUserName: (fullname: string) => string;
-}
-
-function Dashboard(props: DashboardProps) {
+function Dashboard(props:any) {
     const number: number = 5;
     const [showDetails, setShowDetails] = useState(false);
     const [userData, setUserData] = useState<Dashboard | null>(null);
