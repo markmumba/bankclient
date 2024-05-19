@@ -8,7 +8,8 @@ WORKDIR /app
 #   - Copy only package.json and package-lock.json for caching optimization
 #   - Install dependencies in production mode
 COPY package*.json ./
-RUN npm ci && npm install -D serve
+RUN  npm install --production
+
 
 
 # Copy Frontend Code: Copy the rest of your frontend application code
@@ -18,7 +19,7 @@ COPY . .
 RUN npm run build
 
 # Expose the Port: Expose the port Vite uses in production (usually 5173)
-EXPOSE 5173
+EXPOSE 8000 
 
 # Start Command: Use a production-ready web server like 'serve'
-CMD ["npx", "serve", "-s", "build"] 
+CMD ["npm", "run", "preview"] 
