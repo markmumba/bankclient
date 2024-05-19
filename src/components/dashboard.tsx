@@ -11,6 +11,20 @@ function Dashboard(props:any) {
     const [showDetails, setShowDetails] = useState(false);
     const [userData, setUserData] = useState<Dashboard | null>(null);
 
+    async function createSavingsAccount() {
+        try {
+            const response = await axiosInstance.post("/account/create", {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            console.log("Account created:", response.data);
+        } catch (error) {
+            console.error("Error creating account:", error);
+        }
+    }
+
     async function fetchUserData() {
         try {
             const response = await axiosInstance.get("/user", {
@@ -80,7 +94,7 @@ function Dashboard(props:any) {
                                 <div className="flex space-x-10 w-full absolute pt-24 left-[30%]">
                                     {renderAccounts()}
                                     {userData.account.length < 2 && (
-                                        <button className="rounded-lg bg-indigo-500 text-white px-8 py-3 hover:bg-indigo-700 m-14">
+                                        <button className="rounded-lg bg-indigo-500 text-white px-8 py-3 hover:bg-indigo-700 m-14 " onClick={() =>{createSavingsAccount}}>
                                             Add savings Account
                                         </button>
                                     )}
