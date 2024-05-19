@@ -77,7 +77,7 @@ function Dashboard(props: any) {
                     <div className="absolute pl-[50%] pt-12">
                         {showDetails && props.transactionDetails && (
                             <div className="border p-4 bg-lime-300 m-4 rounded-lg">
-                                A transaction has been made on your {props.transactionDetails.accountType}'s account
+                                A transaction has been made on your {props.transactionDetails.account_type}'s account
                             </div>
                         )}
                     </div>
