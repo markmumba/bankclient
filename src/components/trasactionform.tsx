@@ -9,7 +9,7 @@ function TransactionForm(props: any) {
     const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
-        accountType: 'checking',
+        account_type: 'checking',
         amount: '',
     });
 
@@ -58,7 +58,7 @@ function TransactionForm(props: any) {
                             <select
                                 id="accountType"
                                 name="accountType"
-                                value={formData.accountType}
+                                value={formData.account_type}
                                 onChange={handleChange}
                                 className="mt-1 p-2 border rounded-md w-full"
                             >

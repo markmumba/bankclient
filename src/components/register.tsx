@@ -13,9 +13,6 @@ function Register(props: any) {
         password: ""
     });
 
-    console.log(register);
-    console.log(JSON.stringify(register));
-
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         const { name, value } = e.target;
         setRegister((prevRegister) => ({
