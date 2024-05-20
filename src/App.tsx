@@ -21,6 +21,7 @@ function App() {
 
   const [transactionDetails, setTransactionDetails] = useState<{}>()
 
+
   function handleTransactionType(type: string) {
     setTransactionType(type)
   }
