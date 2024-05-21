@@ -23,7 +23,7 @@ const Navbar = (props: any) => {
                 ) : (
                     <div className="px-2 flex justify-between items-center ">
                         <div className="flex items-center ">
-                            <Link to="/"> <h1 className="text-3xl hover:border py-3 px-6 rounded-lg hover:bg-slate-200 font-bold sm:text-4xl ">Chase Bank</h1></Link>
+                            <Link to="/"> <h1 className="text-3xl hover:border py-3 px-6 rounded-lg hover:bg-slate-200 font-bold sm:text-4xl ">M.M Bank</h1></Link>
                         </div>
                         <div className="flex items-center">
                             <ul className="hidden md:flex space-x-6 ">

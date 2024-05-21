@@ -13,7 +13,7 @@ function SideBar(props: any) {
                 'Content-Type': 'application/json'
             }
         });
-        navigate("/login")
+        navigate("/")
     }
 
     return (
