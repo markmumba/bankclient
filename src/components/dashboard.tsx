@@ -33,6 +33,7 @@ function Dashboard(props: any) {
                     'Content-Type': 'application/json'
                 }
             });
+            console.log("User data:", response.data)
             setUserData(response.data);
         } catch (error) {
             console.error("Error fetching user data:", error);
