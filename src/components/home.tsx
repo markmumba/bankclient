@@ -1,3 +1,4 @@
+import HeroPage from "./heropage";
 import Navbar from "./navbar";
 
 
@@ -6,8 +7,7 @@ function HomePage() {
         <>
             <Navbar />
             <div>
-                <h1>Home Page</h1>
-                <p> Welcome to the M.M Bank </p>
+                <HeroPage />
             </div>
         </>
     );

@@ -27,7 +27,7 @@ const Navbar = (props: any) => {
                         </div>
                         <div className="flex items-center">
                             <ul className="hidden md:flex space-x-6 ">
-                                <li className="border py-3 px-8 text-white rounded-lg bg-indigo-500 hover:bg-indigo-700 "><Link to="/login">Login</Link></li>
+                                <li className="border py-3 px-8 text-white rounded-lg bg-violet-500 hover:bg-indigo-700 "><Link to="/login">Login</Link></li>
                                 <li className="border py-3 px-8 rounded-lg hover:bg-indigo-700 hover:text-white "><Link to="/register">Register</Link></li>
                             </ul>
                         </div>
