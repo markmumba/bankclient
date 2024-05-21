@@ -27,7 +27,7 @@ function SideBar(props: any) {
                     <div className="overflow-y-auto overflow-x-hidden flex-grow">
                         <ul className="flex flex-col py-4 space-y-1">
                             <li className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
-                                <Link to="/">
+                                <Link to="/dashboard">
                                     <span className="inline-flex justify-center items-center ml-4">
                                         <House size={20} />
                                     </span>

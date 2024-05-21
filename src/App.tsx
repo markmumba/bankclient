@@ -7,6 +7,7 @@ import { useState } from "react"
 import MainTransaction from "./components/mainTransaction"
 import Transfer from "./components/transfer"
 import TransactionForm from "./components/trasactionform"
+import HomePage from "./components/home"
 
 
 function App() {
@@ -46,6 +47,9 @@ function App() {
         <Navbar user={user} handleUser={handleUser} />
         <Routes>
           <Route path="/" element={
+            <HomePage />
+          } />
+          <Route path="/dashboard" element={
             <Dashboard
               handleUserData={handleUser}
               user={user}

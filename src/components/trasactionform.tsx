@@ -35,7 +35,7 @@ function TransactionForm(props: any) {
 
             if (response) {
                 props.handleTransactionDetails(response.data)
-                navigate("/")
+                navigate("/dashboard")
             }
         } catch (error) {
             console.error('Error submitting form:', error);
