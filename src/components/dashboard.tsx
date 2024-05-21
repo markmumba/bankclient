@@ -12,13 +12,12 @@ function Dashboard(props: any) {
 
     async function createSavingsAccount() {
         try {
-            const response = await axiosInstance.post("/account/create", {}, {
+            await axiosInstance.post("/account/create", {}, {
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
-            console.log("Account created:", response.data);
             fetchUserData(); // Refresh user data to reflect the new account
         } catch (error) {
             console.error("Error creating account:", error);
@@ -33,7 +32,6 @@ function Dashboard(props: any) {
                     'Content-Type': 'application/json'
                 }
             });
-            console.log("User data:", response.data)
             setUserData(response.data);
         } catch (error) {
             console.error("Error fetching user data:", error);
