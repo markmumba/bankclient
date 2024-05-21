@@ -7,22 +7,22 @@ function Transfer(props: any) {
         <>
             <div className=" flex py-24">
                 <SideBar  />
-                <div className="mx-[10%] flex flex-col w-full  items-center  bg-white ">
+                <div className="md:mx-[10%] flex flex-col w-full  items-center  bg-white ">
 
                     <Link to="/form">
-                        <button onClick={() => props.handleTransactionType('deposit')} className="border px-44 py-4  rounded-lg bg-indigo-500 text-white text-xl my-5">
+                        <button onClick={() => props.handleTransactionType('deposit')} className="border px-20 md:px-44 py-4  rounded-lg bg-indigo-500 text-white text-xl my-5">
                             Deposit
                         </button>
                     </Link>
 
                     <Link to="/form">
-                        <button onClick={() => props.handleTransactionType('withdraw')} className="border px-44 py-4  rounded-lg bg-indigo-500 text-white text-xl my-5">
+                        <button onClick={() => props.handleTransactionType('withdraw')} className="border px-20 md:px-44 py-4  rounded-lg bg-indigo-500 text-white text-xl my-5">
                             Withdraw
                         </button>
                     </Link>
 
                     <Link to="/form">
-                        <button onClick={() => props.handleTransactionType('transferfunds')} className="border  px-36 py-4 rounded-lg bg-indigo-500 text-white text-xl my-5">
+                        <button onClick={() => props.handleTransactionType('transferfunds')} className="border  px-14 md:px-36 py-4 rounded-lg bg-indigo-500 text-white text-xl my-5">
                             Transfer Funds
                         </button>
                     </Link>

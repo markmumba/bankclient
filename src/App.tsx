@@ -41,7 +41,7 @@ function App() {
 
 
   return (
-    <div className="">
+    <div className="px-5">
       <BrowserRouter >
         <Routes>
           <Route path="/" element={

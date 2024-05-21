@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { axiosInstance } from "../services/fetcher";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import image from "../assets/8292064.jpg";
 
 function Register(props: any) {
@@ -41,14 +41,13 @@ function Register(props: any) {
             console.error('Error :', error);
         }
     }
-
     return (
         <>
-            <div className="flex h-screen">
-                <div className="w-1/2 bg-cover" style={{ backgroundImage: `url(${image})` }}>
+            <div className="flex flex-col md:flex-row h-screen">
+                <div className="md:w-1/2 w-full bg-cover h-64 md:h-auto" style={{ backgroundImage: `url(${image})` }}>
                 </div>
 
-                <div className="w-1/2 px-20 py-40 mt-20">
+                <div className="md:w-1/2 w-full px-6 md:px-20 py-10 md:py-40 mt-10 md:mt-20">
                     <h2 className="text-3xl font-bold mb-6">Register</h2>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
@@ -67,8 +66,9 @@ function Register(props: any) {
                             <label htmlFor="password" className="block text-sm font-medium text-gray-600">Password</label>
                             <input type="password" id="password" name="password" onChange={handleChange} value={register.password} className="mt-1 p-3 rounded-md bg-gray-200 text-black w-full" />
                         </div>
-                        <button type="submit" className="bg-blue-500 text-white py-3 px-8 rounded-md hover:bg-blue-600">Register</button>
+                        <button type="submit" className="bg-violet-600 text-white py-3 px-8 rounded-md hover:bg-violet-700 w-full">Register</button>
                     </form>
+                     <p className="mt-4 text-blue-700 underline"><Link to="/login">Already have an account?</Link></p>
                 </div>
             </div>
         </>

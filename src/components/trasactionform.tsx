@@ -1,10 +1,12 @@
+
+
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { axiosInstance } from '../services/fetcher';
 import SideBar from './sidebar';
 import { useNavigate } from 'react-router-dom';
 
 function TransactionForm(props: any) {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
         account_type: 'checking',
@@ -23,9 +25,7 @@ function TransactionForm(props: any) {
         e.preventDefault();
 
         try {
-            const jsonFormData = JSON.stringify(formData);
-            console.log('Submitting form data:', jsonFormData); // Debug log
-
+            const jsonFormData = JSON.stringify(formData)
             const response = await axiosInstance.post(`/account/${props.transactionType}`, jsonFormData, {
                 withCredentials: true,
                 headers: {
@@ -33,11 +33,9 @@ function TransactionForm(props: any) {
                 }
             });
 
-            console.log('Response from server:', response.data); // Debug log
-
             if (response) {
-                props.handleTransactionDetails(response.data);
-                navigate("/dashboard");
+                props.handleTransactionDetails(response.data)
+                navigate("/dashboard")
             }
         } catch (error) {
             console.error('Error submitting form:', error);
@@ -48,8 +46,10 @@ function TransactionForm(props: any) {
         <div className='py-20 flex'>
             <SideBar />
             <div className=''>
-                <div className="absolute w-full left-[35%] max-w-xl mt-8 p-10 border bg-white rounded-lg shadow-md">
+                <div className=" absolute left-0 w-full md:left-[35%] max-w-xl mt-8 p-10 border bg-white  rounded-lg shadow-md">
+
                     <h2 className="text-3xl font-bold mb-4">Make {props.transactionType}</h2>
+
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <label htmlFor="account_type" className="block text-sm font-medium text-gray-600">
@@ -94,4 +94,3 @@ function TransactionForm(props: any) {
 };
 
 export default TransactionForm;
-

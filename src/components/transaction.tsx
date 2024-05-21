@@ -32,8 +32,8 @@ function Transaction(props: any) {
 
     return (
         <>
-            <div className={`absolute left-[30%] w-full top-[45%]`}>
-                <h1 className=" font-bold text-3xl pb-3">My Transactions</h1>
+            <div className={`absolute  md:left-[30%] w-full top-[45%] max-md:pt-40`}>
+                <h1 className=" font-bold text-2xl md:text-3xl pb-3">My Transactions</h1>
                 {transactions ? (
                     <div>
                         <div className="flex flex-col max-w-5xl">

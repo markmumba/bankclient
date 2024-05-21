@@ -27,10 +27,10 @@ function MainTransaction() {
 
     return (
         <>
-            <div className="flex ">
+            <div className="flex">
                 <SideBar />
                 <>
-                    <div className="absolute left-[30%] w-full top-[5%] bg-white">
+                    <div className="absolute md:left-[30%] md:w-full top-[5%] bg-white">
                         <h1 className=" font-bold text-3xl pb-3">My Transactions</h1>
                         {transactions ? (
                             <div>

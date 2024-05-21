@@ -12,7 +12,7 @@ function Dashboard(props: any) {
 
     async function createSavingsAccount() {
         try {
-            await axiosInstance.post("/account/create", {}, {
+             await axiosInstance.post("/account/create", {}, {
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'application/json'
@@ -56,13 +56,13 @@ function Dashboard(props: any) {
         return userData.account.map((account: AccountDetails) => (
             <div key={account.accountNumber} className="rounded-2xl flex-auto max-w-sm p-6 space-y-4 text-white shadow-lg bg-gradient-to-br from-cyan-500 via-indigo-400 to-slate-900 hover:bg-gradient-to-tr">
                 <div className="flex justify-between">
-                    <p className="text-xl">{`${account.accountType}'s Account`}</p>
+                    <p className="md:text-xl">{`${account.accountType}'s Account`}</p>
                     <p>{getExpireDate(account.dateJoined)}</p>
                 </div>
-                <div className="text-xl">
+                <div className="text-lg md:text-xl">
                     <p>{splitAccountNo(account.accountNumber)}</p>
                 </div>
-                <div className="text-3xl">
+                <div className="text-xl md:text-3xl">
                     <p>{formatMoneyString(account.balance)}</p>
                 </div>
             </div>
@@ -84,13 +84,13 @@ function Dashboard(props: any) {
                         {userData ? (
                             <>
                                 <SideBar fullName={props.handleUserName(userData.user.fullname)} />
-                                <div className="absolute left-[30%]">
+                                <div className="absolute md:left-[30%]">
                                     <div>
                                         <h1 className="text-4xl font-bold">Dashboard</h1>
                                         <h2 className="text-slate-500">Welcome back, {userData.user.username}</h2>
                                     </div>
                                 </div>
-                                <div className="flex space-x-10 w-full absolute pt-24 left-[30%]">
+                                <div className="md:flex space-y-10 md:space-x-10 w-full absolute pt-24 md:left-[30%]">
                                     {renderAccounts()}
                                     {userData.account.length < 2 && (
                                         <button
