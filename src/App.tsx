@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Login from "./components/login"
-import Navbar from "./components/navbar"
 import Register from "./components/register"
 import Dashboard from "./components/dashboard"
 import { useState } from "react"
@@ -44,7 +43,6 @@ function App() {
   return (
     <div className="">
       <BrowserRouter >
-        <Navbar user={user} handleUser={handleUser} />
         <Routes>
           <Route path="/" element={
             <HomePage />
