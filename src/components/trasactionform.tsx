@@ -52,12 +52,12 @@ function TransactionForm(props: any) {
 
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
-                            <label htmlFor="accountType" className="block text-sm font-medium text-gray-600">
+                            <label htmlFor="account_type" className="block text-sm font-medium text-gray-600">
                                 Account Type
                             </label>
                             <select
-                                id="accountType"
-                                name="accountType"
+                                id="account_type"
+                                name="account_type"
                                 value={formData.account_type}
                                 onChange={handleChange}
                                 className="mt-1 p-2 border rounded-md w-full"
