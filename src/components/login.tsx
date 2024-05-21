@@ -42,7 +42,7 @@ function Login(props: any) {
             });
 
             props.handleUser(true);
-            navigate("/");
+            navigate("/dashboard");
         } catch (error) {
             console.error("Error:", error);
         }
