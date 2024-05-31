@@ -1,12 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Gear, GraphUpArrow, CashCoin, House, BoxArrowRight } from "react-bootstrap-icons";
+import { Gear, CashCoin, House, BoxArrowRight } from "react-bootstrap-icons";
 import { axiosInstance } from "../services/fetcher";
 import { useState } from "react";
 
 
 function SideBar(props: any) {
-
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [showSidebar, setShowSidebar] = useState(false);
 
     const handleToggleSidebar = () => {
@@ -20,7 +19,7 @@ function SideBar(props: any) {
                 'Content-Type': 'application/json'
             }
         });
-        navigate("/")
+        navigate("/");
     }
 
     return (
@@ -40,7 +39,7 @@ function SideBar(props: any) {
                 </div>
 
                 {/* Sidebar */}
-                <div className={`md:relative fixed inset-y-0 left-0 w-64 bg-white h-full border-r z-40 ${showSidebar ? 'block' : 'hidden'}`}>
+                <div className={`md:relative fixed inset-y-0 left-0 w-64 bg-white h-full border-r z-40 ${showSidebar ? 'block' : 'hidden md:block'}`}>
                     <div className="flex items-center justify-center h-14 border-b">
                         <div>Chase Bank</div>
                     </div>
@@ -61,12 +60,6 @@ function SideBar(props: any) {
                                     </span>
                                     <span className="ml-2 text-md tracking-wide truncate">Transfer</span>
                                 </Link>
-                            </li>
-                            <li className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
-                                <a href="#" className="inline-flex justify-center items-center ml-4">
-                                    <GraphUpArrow size={20} />
-                                    <span className="ml-2 text-md tracking-wide truncate">Statistics</span>
-                                </a>
                             </li>
                             <li className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
                                 <a href="#" className="inline-flex justify-center items-center ml-4">
@@ -95,6 +88,3 @@ function SideBar(props: any) {
 }
 
 export default SideBar;
-
-
-

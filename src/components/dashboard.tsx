@@ -9,10 +9,11 @@ function Dashboard(props: any) {
     const number: number = 5;
     const [showDetails, setShowDetails] = useState(false);
     const [userData, setUserData] = useState<Dashboard | null>(null);
+    const [loading, setLoading] = useState(true);
 
     async function createSavingsAccount() {
         try {
-             await axiosInstance.post("/account/create", {}, {
+            await axiosInstance.post("/account/create", {}, {
                 withCredentials: true,
                 headers: {
                     'Content-Type': 'application/json'
@@ -25,6 +26,7 @@ function Dashboard(props: any) {
     }
 
     async function fetchUserData() {
+        setLoading(true);
         try {
             const response = await axiosInstance.get("/user", {
                 withCredentials: true,
@@ -35,6 +37,8 @@ function Dashboard(props: any) {
             setUserData(response.data);
         } catch (error) {
             console.error("Error fetching user data:", error);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -73,7 +77,7 @@ function Dashboard(props: any) {
         <div className="overflow-hidden">
             {props.user ? (
                 <div>
-                    <div className="absolute pl-[50%] pt-12">
+                    <div className="absolute pl-[50%] overflow-hidden pt-12">
                         {showDetails && props.transactionDetails && (
                             <div className="border p-4 bg-lime-300 m-4 rounded-lg">
                                 A transaction has been made on your {props.transactionDetails.account_type}'s account
@@ -81,29 +85,37 @@ function Dashboard(props: any) {
                         )}
                     </div>
                     <div className="flex py-20">
-                        {userData ? (
-                            <>
-                                <SideBar fullName={props.handleUserName(userData.user.fullname)} />
-                                <div className="absolute md:left-[30%]">
-                                    <div>
-                                        <h1 className="text-4xl font-bold">Dashboard</h1>
-                                        <h2 className="text-slate-500">Welcome back, {userData.user.username}</h2>
-                                    </div>
+                        {loading ? (
+                            <div className="flex justify-center items-center w-full">
+                                <div className="spinner-border animate-spin inline-block w-40 h-40 border-4 rounded-full" role="status">
+                                    <span className="visually-hidden">Loading...</span>
                                 </div>
-                                <div className="md:flex space-y-10 md:space-x-10 w-full absolute pt-24 md:left-[30%]">
-                                    {renderAccounts()}
-                                    {userData.account.length < 2 && (
-                                        <button
-                                            className="rounded-lg bg-indigo-500 text-white px-8 py-3 hover:bg-indigo-700 m-14"
-                                            onClick={createSavingsAccount}
-                                        >
-                                            Add savings Account
-                                        </button>
-                                    )}
-                                </div>
-                            </>
+                            </div>
                         ) : (
-                            <h1>No user data available</h1>
+                            userData ? (
+                                <>
+                                    <SideBar fullName={props.handleUserName(userData.user.fullname)} />
+                                    <div className="absolute md:left-[30%]">
+                                        <div>
+                                            <h1 className="text-4xl font-bold">Dashboard</h1>
+                                            <h2 className="text-slate-500">Welcome back, {userData.user.username}</h2>
+                                        </div>
+                                    </div>
+                                    <div className="md:flex max-md:space-y-10 md:space-x-10 w-full absolute pt-24 md:left-[30%]">
+                                        {renderAccounts()}
+                                        {userData.account.length < 2 && (
+                                            <button
+                                                className="rounded-lg bg-indigo-500 text-white px-8 py-3 hover:bg-indigo-700 m-14"
+                                                onClick={createSavingsAccount}
+                                            >
+                                                Add savings Account
+                                            </button>
+                                        )}
+                                    </div>
+                                </>
+                            ) : (
+                                <h1>No user data available</h1>
+                            )
                         )}
                         <Transaction number={number} />
                     </div>

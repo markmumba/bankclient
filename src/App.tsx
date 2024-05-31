@@ -41,7 +41,7 @@ function App() {
 
 
   return (
-    <div className="px-5">
+    <div className="px-5 overflow-hidden">
       <BrowserRouter >
         <Routes>
           <Route path="/" element={
